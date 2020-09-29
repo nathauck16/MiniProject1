@@ -16,36 +16,36 @@ class Main {
       //variables
       int userNum = s.nextInt();
       Random numToGuess = new Random();
-      int randomNumber = numToGuess.nextInt(userNum) + 1;
-      int numToGuess;
+      int randomNumber = numToGuess.nextInt(userNum -1) + 1;
+      
       // check random number. comment out later
       System.out.println("the random number is: " + randomNumber);
 
       System.out.println("A random number to guess has been generated");
 
-      playGame(numToGuess, userNum);
+      playGame(randomNumber, userNum);
   }
 
 //new method
-  static void playGame(Random theNumToGuess, int theUserNum) {
+  static void playGame(int theRandomNumber, int theUserNum) {
       Scanner guess = new Scanner(System.in);
       System.out.println("please guess a number between 0 and " + theUserNum);
       int userGuess;
       int numGuesses = 0;
-      numGuesses++;
+      
 
       do{
          userGuess = guess.nextInt();
-         guessCount ++;
-         if(userGuess > theNumToGuess){
+         numGuesses ++;
+         if(userGuess > theRandomNumber){
            System.out.println("Incorrect. Enter your new guess(Try guessing lower!)");
-         } else if(userGuess < theNumToGuess){
+         } else if(userGuess < theRandomNumber){
            System.out.println("Incorrect. Enter your new guess(Try guessing higher!)");
          }
-      } while(userGuess!= theNumToGuess);
-      if (userGuess == theNumToGuess){
+      } while(userGuess != theRandomNumber);
+      if (userGuess == theRandomNumber){
         System.out.println("Great, you win! It took you " +
-        guessCount + "tries!" );
+        numGuesses + " tries!" );
       }
   }
 }
